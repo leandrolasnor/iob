@@ -1,0 +1,9 @@
+{
+  "name": "iob",
+  "version": "1.0.0",
+  "description": "teste tecnico",
+  "main": "index.js",
+  "author": "Leandro Lasnor",
+  "license": "MIT",
+  "private": true
+}
