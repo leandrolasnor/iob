@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_14_230323) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_15_030704) do
+  create_table "countries", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "code", null: false
+    t.integer "demographic_density", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false

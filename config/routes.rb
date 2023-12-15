@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  scope '/v1' do
+    resources :countries, only: [:show] do
+      get :list, on: :collection
+    end
+  end
+
   # Defines the root path route ("/")
   root to: proc { [200, {}, ['success']] }
   match '*path', via: :all, to: proc { [404, {}, nil] }
