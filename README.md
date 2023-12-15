@@ -54,9 +54,9 @@ services:
 
 ```
 all: prepare run
- 
+
 prepare:
-	docker compose up db api -d
+	docker compose up api -d
 	docker compose exec api bundle exec rake db:migrate:reset
 	docker compose exec api bundle exec rake db:seed
 
@@ -87,5 +87,5 @@ _presumo que nesse momento seu ambiente esteja devidamente configurado e o banco
 * Copie o `token` e clique no botão **Authorize** no canto superior direito da interface do [`Swagger`](http://localhost:3000/api-docs)
 * Cole e conteúdo, clique em **Authorize** e depois em **Close**
 * Agora será possível integarir com a api pela interface do [`Swagger`](http://localhost:3000/api-docs)
-
+  - listar paises
   - visualizar as informações de um país
