@@ -54,6 +54,8 @@ gem 'devise'
 
 gem 'foreman'
 
+gem 'kaminari'
+
 group :development, :test do
   gem 'bullet'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
