@@ -3,9 +3,100 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+paths:
+  "/v1/countries/list":
+    get:
+      summary: list country
+      tags:
+      - Countries
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: page
+        in: query
+        description: pagination
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        description: pagination
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+  "/v1/countries/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show country
+      tags:
+      - Country
+      security:
+      - ApiKeyAuth: []
+      responses:
+        '200':
+          description: successful
+  "/auth/sign_in":
+    post:
+      summary: sign in with user
+      tags:
+      - Auth
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/auth":
+    post:
+      summary: create a user
+      tags:
+      - Auth
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - email
+              - password
+              - password_confirmation
 servers:
 - url: http://{defaultHost}
   variables:
     defaultHost:
-      default: 127.0.0.1:3000
+      default: localhost:3000
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
