@@ -2,7 +2,7 @@
 
 Este documento descreve o passo a passo para rodar a aplicação referente ao desafio da vaga de Fullstack da IOB
 
-[Enunciado do problema](https://drive.google.com/file/d/1ibXBWxRVvqlIs1NQSrmO7kUnfrSopz2z/view?usp=drive_link)
+[Enunciado do problema](https://drive.google.com/file/d/1ibXBWxRVvqlIs1NQSrmO7kUnfrSopz2z/view?usp=drive_link){:target="_blank"}
 
 
 ## Considerações sobre o ambiente
