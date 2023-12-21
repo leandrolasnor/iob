@@ -11,7 +11,7 @@ Este documento descreve o passo a passo para rodar a aplicação referente ao de
 # docker-compose.yml
 version: '2.22'
 services:
-  react:
+  frontend:
     image: leandrolasnor/ruby:iob
     container_name: iob.react
     stdin_open: true
@@ -20,18 +20,16 @@ services:
     ports:
       - 3001:3001
     depends_on:
-      - api
+      - backend
 
-  api:
+  backend:
     image: leandrolasnor/ruby:iob
-    container_name: iob.api
+    container_name: iob.rails
     stdin_open: true
     tty: true
     command: sh
     ports:
       - 3000:3000
-    depends_on:
-      - redis
 ```
 
 * Uma image docker foi publicada no [Docker Hub](https://hub.docker.com/layers/leandrolasnor/ruby/zrp/images/sha256-ce5bc45ff7c8721df11ff6fcc61a4e6a578ad314594f90a8af9904e4c4c9ee42?context=explore)
