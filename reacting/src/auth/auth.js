@@ -26,11 +26,9 @@ export default function Auth() {
 
   return (
     <Container>
-      <Row>
-        <Col className='mt-2' md={{ span: 2, offset: 4 }} sm={12}>
-          <Button variant="primary" className="w-100" onClick={handleShowStart}>
-            Sign In
-          </Button>
+      <Row center>
+        <Col className='mt-2 justify-content-end' md={{span: 2, offset: 4}} sm={12}>
+          <Button className='w-100' onClick={handleShowStart}>Sign In</Button>
 
           <Offcanvas show={showStart} onHide={handleCloseStart} placement='start' key='start'>
             <Offcanvas.Header closeButton>
@@ -57,10 +55,8 @@ export default function Auth() {
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
-        <Col className='mt-2' md={{ span: 2, offset: 0 }} sm={12}>
-          <Button variant="primary" className="w-100" onClick={handleShowEnd}>
-            Sign Up
-          </Button>
+        <Col className='mt-2' md={{span: 2, offset: 0}} sm={12}>
+          <Button className='w-100' onClick={handleShowEnd}>Sign Up</Button>
 
           <Offcanvas show={showEnd} onHide={handleCloseEnd} key='end' placement='end'>
             <Offcanvas.Header closeButton>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope '/v1' do
     resources :countries, only: [:show] do
       get :list, on: :collection
+      get :map, on: :collection
     end
   end
 

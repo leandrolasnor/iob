@@ -1,5 +1,5 @@
 import axios from 'axios'
-import handle_errors from './handle_errors'
+import handle_errors from '../handle_errors'
 import { toastr } from 'react-redux-toastr'
 
 var _ = require('lodash')
@@ -28,8 +28,7 @@ export const sign_up = values => {
       if(_.get(e, 'response.data', false)){
         if(_.get(e, 'response.data.errors.full_messages', false)){
           Object.entries(e.response.data.errors.full_messages).forEach(error => {
-            const [_key, value] = error
-            toastr.error('', JSON.stringify(value).replace(/,|\d|:|[|]|'|{|}/g, ' '))
+            toastr.error('', JSON.stringify(error[1]).replace(/,|\d|:|[|]|'|{|}/g, ' '))
           })
         }
       }else{

@@ -54,12 +54,12 @@ services:
 all: prepare run
 
 prepare:
-	docker compose up api -d
-	docker compose exec api bundle exec rake db:migrate:reset
-	docker compose exec api bundle exec rake db:seed
+	docker compose up backend -d
+	docker compose exec backend bundle exec rake db:migrate:reset
+	docker compose exec backend bundle exec rake db:seed
 
 run:
-	docker compose exec api foreman start
+	docker compose exec backend foreman start
 ```
 
 * Faça o clone deste repositório ou copie os arquivos `makefile` e `docker-compose.yaml` para um pasta na sua máquina

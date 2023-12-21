@@ -1,21 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { logout } from './auth/actions'
-import Map from './countries/map.js'
+import { useSelector } from 'react-redux'
+import {Container, Row, Col} from 'react-bootstrap'
 import axios from 'axios'
-import logo from './logo.svg';
-import './App.css';
+import Map from './map/map'
 
 const _ = require('lodash')
 
-const App = props => {
-  const dispatch = useDispatch()
+const App = () => {
   const { user } = useSelector(state => state.auth)
-  axios.defaults.headers.common['Authorization'] = _.get(user, "authorization");
+  axios.defaults.headers.common['Authorization'] = _.get(user, "authorization")
 
   return (
-    <div>
-      <Map />
-    </div>
+    <Container>
+      <Row className='ml-0'>
+        <Col sm={12}>
+          <Map/>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
