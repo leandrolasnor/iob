@@ -26,7 +26,7 @@ export default function Auth() {
 
   return (
     <Container>
-      <Row center>
+      <Row>
         <Col className='mt-2 justify-content-end' md={{span: 2, offset: 4}} sm={12}>
           <Button className='w-100' onClick={handleShowStart}>Sign In</Button>
 

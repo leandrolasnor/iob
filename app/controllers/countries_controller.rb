@@ -2,7 +2,6 @@
 
 class CountriesController < BaseController
   include ActionController::Live
-  skip_before_action :authenticate_user!, :only => [:map]
 
   def show
     status, content, serializer = Http::ShowCountry::Service.(show_params)
@@ -16,12 +15,13 @@ class CountriesController < BaseController
 
   def map
     response.headers['Content-Type'] = 'text/event-stream'
-    sse = SSE.new(response.stream, event: "COUNTRY_FETCHED")
-    ShowCountry::Models::Country.find_in_batches(batch_size: 100) do |countries|
-      countries.map do |country|
-        sse.write({ country: country.code, value: country.demographic_density })
-      end
+    response.headers['Last-Modified'] = Time.now.httpdate
+    sse = SSE.new(response.stream, event: 'message')
+    ShowCountry::Models::Country.find_in_batches(batch_size: 10) do |group|
+      sse.write({ type: 'COUNTRY_FETCHED', payload: group.map { { country: _1.code, value: _1.demographic_density } } })
     end
+  rescue ActionController::Live::ClientDisconnected
+    sse.close
   ensure
     sse.close
   end

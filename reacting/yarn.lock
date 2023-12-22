@@ -4731,6 +4731,11 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
+event-source-polyfill@^1.0.31:
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/event-source-polyfill/-/event-source-polyfill-1.0.31.tgz#45fb0a6fc1375b2ba597361ba4287ffec5bf2e0c"
+  integrity sha512-4IJSItgS/41IxN5UVAVuAyczwZF7ZIEsM1XAoUzIHA6A+xzusEZUutdXz2Nr+MQPLxfTiCvqE79/C8HT8fKFvA==
+
 eventemitter3@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
@@ -8395,11 +8400,6 @@ react-widgets@^5.8.4:
     react-transition-group "^4.4.2"
     tiny-warning "^1.0.3"
     uncontrollable "^7.2.1"
-
-react-world-countries-map@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-world-countries-map/-/react-world-countries-map-1.1.0.tgz#d521a89a6fa9067b0e6f91630741b64878fbf954"
-  integrity sha512-+fgUROY8bGeJ+F8ude3Itc8JGA4chdcr/dm8GH5yzg4lKUcC6bFx3oqW6mnhgBJsSv6OnlIBAXauu3gAIQd4cg==
 
 react@^18.2.0:
   version "18.2.0"

@@ -12,9 +12,11 @@ var reducer = (state = INITIAL_STATE, action) => {
           ...action.payload
         ]
       }
+    case "LOGOUT":
+      return INITIAL_STATE
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer

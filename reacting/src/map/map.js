@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ReactWorldCountriesMap } from "react-world-countries-map"
-import { get_countries } from './actions'
+import WorldMap from 'react-svg-worldmap'
 
 const _ = require('lodash')
 
@@ -9,23 +8,26 @@ const Map = () => {
   const dispatch = useDispatch()
   const { data } = useSelector(state => state.map)
   const { user } = useSelector(state => state.auth)
+  const initialized = useRef(false)
 
   useEffect(() => {
-    const eventSource = new EventSource("http://localhost:3000/v1/countries/map", { headers: {Authorization: _.get(user, "authorization")}})
-    eventSource.onmessage = (event) => {
-      console.log(event)
+    if (!initialized.current) {
+      initialized.current = true
+      let eventSource = new EventSource("http://localhost:3000/v1/countries/map", { headers: {'authorization': _.get(user, 'authorization')} })
+      eventSource.onmessage = (e) => dispatch(JSON.parse(e.data))
+      eventSource.onerror = (e) => eventSource.close()
     }
-    return () => eventSource.close();
-  })
+  }, [])
 
   return (
-    // <ReactWorldCountriesMap
-    //   color="black"
-    //   value-suffix="Hab/km²"
-    //   size="xlg"
-    //   data={data}
-    // />
-    <div></div>
+    <WorldMap
+      title='Demographic Density'
+      color="black"
+      valueSuffix="hab/km²"
+      size="xxl"
+      data={data}
+      richInteraction={true}
+    />
   )
 }
 
