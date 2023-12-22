@@ -13,7 +13,7 @@ const Map = () => {
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true
-      let eventSource = new EventSource("http://localhost:3000/v1/countries/map", { headers: {'authorization': _.get(user, 'authorization')} })
+      let eventSource = new EventSource('http://localhost:3000/v1/countries/map', { headers: {'authorization': _.get(user, 'authorization')} })
       eventSource.onmessage = (e) => dispatch(JSON.parse(e.data))
       eventSource.onerror = (e) => eventSource.close()
     }
@@ -21,10 +21,10 @@ const Map = () => {
 
   return (
     <WorldMap
-      title='Demographic Density'
-      color="black"
-      valueSuffix="hab/km²"
-      size="xxl"
+      title={'Demographic Density'}
+      color='black'
+      valueSuffix='hab/km²'
+      size='xxl'
       data={data}
       richInteraction={true}
     />

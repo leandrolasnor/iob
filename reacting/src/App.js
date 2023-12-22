@@ -15,8 +15,8 @@ const App = () => {
 
   return (
     <Container fluid>
-      <Row className='m-0 mt-2'>
-        <Col sm={{span: 10, offset: 2}}>
+      <Row className='mt-2'>
+        <Col sm={12}>
             <Button variant='link danger' size='sm' onClick={() => dispatch(logout())}>Logout</Button>
             <Map/>
         </Col>

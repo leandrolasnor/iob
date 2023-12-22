@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   scope '/v1' do
-    resources :countries, only: [:show] do
-      get :list, on: :collection
+    resources :countries, only: [] do
       get :map, on: :collection
     end
   end

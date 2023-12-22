@@ -7,3 +7,5 @@ prepare:
 
 run:
 	docker compose exec backend foreman start
+yarn:
+  yarn --cwd ./reacting install
