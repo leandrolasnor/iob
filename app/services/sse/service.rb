@@ -11,7 +11,7 @@ class Sse::Service
   def self.call(response:, **args)
     response.headers['Content-Type'] = 'text/event-stream'
     response.headers['Last-Modified'] = ::Time.zone.now.httpdate
-    sse = SSE.new(response.stream, event: 'message')
+    sse = SSE.new(response.stream)
 
     if defined?(self::Contract)
       contract = self::Contract.call(args.to_h)
