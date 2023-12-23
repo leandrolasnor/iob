@@ -3,32 +3,28 @@
 require 'swagger_helper'
 
 RSpec.describe CountriesController do
-  path '/v1/countries/list' do
+  path '/v1/countries/map' do
     get('list country') do
       tags 'Countries'
       security [{ ApiKeyAuth: [] }]
-      parameter name: :page, in: :query, type: :integer, description: 'pagination'
-      parameter name: :per_page, in: :query, type: :integer, description: 'pagination'
       response(200, 'successful') do
         let(:countries) { create_list(:country, 6) }
-        let(:page) { 2 }
-        let(:per_page) { 3 }
+        let(:parsed_body) { eval("{ #{response.body} }") }
 
         let(:expected_body) do
-          [
-            {
-              id: be_a(Integer),
-              name: countries[2].name
-            },
-            {
-              id: be_a(Integer),
-              name: countries[1].name
-            },
-            {
-              id: be_a(Integer),
-              name: countries[0].name
+          {
+            data: {
+              type: 'COUNTRY_FETCHED',
+              payload: [
+                { country: countries.first.code, value: countries.first.demographic_density },
+                { country: countries.second.code, value: countries.second.demographic_density },
+                { country: countries.third.code, value: countries.third.demographic_density },
+                { country: countries.fourth.code, value: countries.fourth.demographic_density },
+                { country: countries.fifth.code, value: countries.fifth.demographic_density },
+                { country: countries.last.code, value: countries.last.demographic_density }
+              ]
             }
-          ]
+          }
         end
 
         before do
@@ -38,33 +34,6 @@ RSpec.describe CountriesController do
         run_test! do |response|
           expect(response).to have_http_status(:ok)
           expect(parsed_body).to match(expected_body)
-        end
-      end
-    end
-  end
-
-  path '/v1/countries/{id}' do
-    let(:country) { create(:country, name: 'Country name', code: 'code', demographic_density: 999) }
-    parameter name: 'id', in: :path, type: :string, description: 'id'
-
-    get('show country') do
-      tags 'Country'
-      consumes "application/json"
-      security [{ ApiKeyAuth: [] }]
-      response(200, 'successful') do
-        let(:id) { country.id }
-
-        let(:expected_body) do
-          {
-            name: 'Country name',
-            code: 'code',
-            demographic_density: 999
-          }
-        end
-
-        run_test! do |response|
-          expect(response).to have_http_status(:ok)
-          expect(parsed_body).to eq(expected_body)
         end
       end
     end
