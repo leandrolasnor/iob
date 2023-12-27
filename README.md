@@ -32,8 +32,9 @@ services:
       - 3000:3000
 ```
 
-* Uma image docker foi publicada no [Docker Hub](https://hub.docker.com/layers/leandrolasnor/ruby/zrp/images/sha256-ce5bc45ff7c8721df11ff6fcc61a4e6a578ad314594f90a8af9904e4c4c9ee42?context=explore)
+* Uma image docker foi publicada no [Docker Hub](https://hub.docker.com/layers/leandrolasnor/ruby/iob/images/sha256-d4c7c030705579ac269b442b4eac0972fca77c0d10c5b7abc2f5b6176a37a764?context=repo)
 
+## Considerações sobre a aplicação
 #### Conceitos e ferramentas utilizadas na resolução do problema
 * Princípio de Inversão de Dependência
 * Princípio da Segregação da Interface
@@ -47,8 +48,7 @@ services:
 * Dry-rb
 * RSpec
 * RSwag
-
-## Considerações sobre a aplicação
+* SSE
 
 ```
 all: prepare run
@@ -58,17 +58,19 @@ prepare:
 	docker compose exec backend bundle exec rake db:migrate:reset
 	docker compose exec backend bundle exec rake db:seed
 
+yarn:
+	yarn --cwd ./reacting install
+
 run:
 	docker compose exec backend foreman start
 ```
-
-* Faça o clone deste repositório ou copie os arquivos `makefile` e `docker-compose.yaml` para um pasta na sua máquina
-
-* Use o comando `make prepare` para baixar a imagem e subir o container _api_
-
-__Nessa etapa as `migrations` foram executadas e o banco de dados se encontra populado com alguns dados__
-
 ## Passo a Passo de como executar a solução
+
+* Faça o clone deste repositório ou copie os arquivos `makefile` e `docker-compose.yaml` para uma pasta local
+
+* Use o comando `make prepare` para baixar a imagem e subir o container _backend_
+
+* _Nessa etapa as `migrations` foram executadas e o banco de dados se encontra populado com alguns dados_
 
 _presumo que nesse momento seu ambiente esteja devidamente configurado e o banco de dados criado e populado_
 
@@ -85,5 +87,3 @@ _presumo que nesse momento seu ambiente esteja devidamente configurado e o banco
 * Copie o `token` e clique no botão **Authorize** no canto superior direito da interface do [`Swagger`](http://localhost:3000/api-docs)
 * Cole e conteúdo, clique em **Authorize** e depois em **Close**
 * Agora será possível integarir com a api pela interface do [`Swagger`](http://localhost:3000/api-docs)
-  - listar paises
-  - visualizar as informações de um país
