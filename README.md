@@ -11,20 +11,9 @@ Este documento descreve o passo a passo para rodar a aplicação referente ao de
 # docker-compose.yml
 version: '2.22'
 services:
-  frontend:
+  app:
     image: leandrolasnor/ruby:iob
-    container_name: iob.react
-    stdin_open: true
-    tty: true
-    command: sh
-    ports:
-      - 3001:3001
-    depends_on:
-      - backend
-
-  backend:
-    image: leandrolasnor/ruby:iob
-    container_name: iob.rails
+    container_name: iob.app
     stdin_open: true
     tty: true
     command: sh
@@ -55,12 +44,12 @@ services:
 all: prepare run
 
 prepare:
-	docker compose up backend -d
-	docker compose exec backend bundle exec rake db:migrate:reset
-	docker compose exec backend bundle exec rake db:seed
+	docker compose up app -d
+	docker compose exec app bundle exec rake db:migrate:reset
+	docker compose exec app bundle exec rake db:seed
 
 run:
-	docker compose exec backend foreman start
+	docker compose exec app foreman start
 ```
 ## Passo a Passo de como executar a solução
 
