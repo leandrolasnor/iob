@@ -30,6 +30,7 @@ services:
     command: sh
     ports:
       - 3000:3000
+      - 3001:3001
 ```
 
 * Uma image docker foi publicada no [Docker Hub](https://hub.docker.com/layers/leandrolasnor/ruby/iob/images/sha256-d4c7c030705579ac269b442b4eac0972fca77c0d10c5b7abc2f5b6176a37a764?context=repo)
