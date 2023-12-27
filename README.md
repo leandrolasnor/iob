@@ -58,9 +58,6 @@ prepare:
 	docker compose exec backend bundle exec rake db:migrate:reset
 	docker compose exec backend bundle exec rake db:seed
 
-yarn:
-	yarn --cwd ./reacting install
-
 run:
 	docker compose exec backend foreman start
 ```
