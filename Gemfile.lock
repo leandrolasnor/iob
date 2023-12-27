@@ -91,6 +91,8 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.2.2)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     date (3.3.4)
     debug (1.9.0)
@@ -108,6 +110,7 @@ GEM
       rails (>= 4.2.0, < 7.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    domain_name (0.6.20231109)
     dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -165,6 +168,10 @@ GEM
     foreman (0.87.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashdiff (1.1.0)
+    http-accept (1.7.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.7.0)
@@ -198,6 +205,9 @@ GEM
       net-smtp
     marcel (1.0.2)
     method_source (1.0.0)
+    mime-types (3.5.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2023.1205)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -210,6 +220,7 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
+    netrc (0.11.0)
     nio4r (2.7.0)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
@@ -267,6 +278,11 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.2.6)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -344,6 +360,8 @@ GEM
     simplecov_json_formatter (0.1.4)
     spring (4.1.3)
     sqlite3 (1.6.9-x86_64-linux)
+    sse-client (1.1.0)
+      rest-client
     stringio (3.1.0)
     thor (1.3.0)
     timecop (0.9.8)
@@ -354,6 +372,10 @@ GEM
     uniform_notifier (1.16.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    webmock (3.19.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -393,8 +415,10 @@ DEPENDENCIES
   simplecov
   spring
   sqlite3 (~> 1.4)
+  sse-client
   timecop
   tzinfo-data
+  webmock
 
 RUBY VERSION
    ruby 3.2.2p53

@@ -69,6 +69,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'timecop'
+  gem 'webmock'
+  gem 'sse-client'
 end
 
 group :development do

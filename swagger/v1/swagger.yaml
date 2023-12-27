@@ -4,39 +4,11 @@ info:
   title: API V1
   version: v1
 paths:
-  "/v1/countries/list":
+  "/v1/countries/map":
     get:
       summary: list country
       tags:
       - Countries
-      security:
-      - ApiKeyAuth: []
-      parameters:
-      - name: page
-        in: query
-        description: pagination
-        schema:
-          type: integer
-      - name: per_page
-        in: query
-        description: pagination
-        schema:
-          type: integer
-      responses:
-        '200':
-          description: successful
-  "/v1/countries/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: show country
-      tags:
-      - Country
       security:
       - ApiKeyAuth: []
       responses:
