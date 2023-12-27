@@ -69,8 +69,6 @@ run:
 
 * _Nessa etapa as `migrations` foram executadas e o banco de dados se encontra populado com alguns dados_
 
-_presumo que nesse momento seu ambiente esteja devidamente configurado e o banco de dados criado e populado_
-
 * Use o comando `make run` para rodar o frontend e o backend.
 
 ## Documentação
