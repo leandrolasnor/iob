@@ -12,9 +12,12 @@ class Map::Monad
 
   def call
     Try do
-      model.find_in_batches(batch_size: 10) do |group|
-        publish('country.fetched', payload: group.map { { country: _1.code, value: _1.demographic_density } })
+      records = []
+      model.find_in_batches(batch_size: 10) do |batch|
+        publish('country.fetched', payload: batch)
+        records += batch
       end
+      records
     end
   end
 end

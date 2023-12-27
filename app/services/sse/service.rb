@@ -10,13 +10,13 @@ class Sse::Service
 
   def self.call(response:, **args)
     response.headers['Content-Type'] = 'text/event-stream'
-    response.headers['Last-Modified'] = ::Time.zone.now.httpdate
+    response.headers['Last-Modified'] = ::Time.now.httpdate
     sse = SSE.new(response.stream)
 
     if defined?(self::Contract)
       contract = self::Contract.call(args.to_h)
       if contract.failure?
-        sse.write({type: 'CONTRACT_ERROR', payload: contract.errors.to_h})
+        sse.write({ type: 'CONTRACT_ERROR', payload: contract.errors.to_h })
         sse.close
         return
       end

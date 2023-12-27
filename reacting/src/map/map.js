@@ -13,7 +13,10 @@ const Map = () => {
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true
-      let eventSource = new EventSource('http://localhost:3000/v1/countries/map', { headers: {'authorization': _.get(user, 'authorization')} })
+      let eventSource = new EventSource(
+        `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_MAP_URI}`,
+        { headers: {'authorization': _.get(user, 'authorization')} }
+      )
       eventSource.onmessage = (e) => dispatch(JSON.parse(e.data))
       eventSource.onerror = (e) => eventSource.close()
     }

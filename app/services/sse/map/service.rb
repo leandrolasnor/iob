@@ -5,7 +5,13 @@ class Sse::Map::Service < Sse::Service
 
   def call
     monad.subscribe('country.fetched') do |event|
-      sse.write({ type: 'COUNTRY_FETCHED', payload: event[:payload] })
+      payload = event[:payload].map do
+        {
+          country: _1.code,
+          value: _1.demographic_density
+        }
+      end
+      sse.write({ type: 'COUNTRY_FETCHED', payload: payload })
     end
     res = monad.()
 
