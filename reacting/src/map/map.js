@@ -20,7 +20,7 @@ const Map = () => {
       eventSource.onmessage = (e) => dispatch(JSON.parse(e.data))
       eventSource.onerror = (e) => eventSource.close()
     }
-  }, [])
+  }, [dispatch, user])
 
   return (
     <WorldMap
