@@ -55,7 +55,7 @@ run:
 
 * Faça o clone deste repositório ou copie os arquivos `makefile` e `docker-compose.yaml` para uma pasta local
 
-* Use o comando `make prepare` para baixar a imagem e subir o container _backend_
+* Use o comando `make prepare` para baixar a imagem e subir o container
 
 * _Nessa etapa as `migrations` foram executadas e o banco de dados se encontra populado com alguns dados_
 
