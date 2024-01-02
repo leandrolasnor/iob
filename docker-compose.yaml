@@ -3,9 +3,10 @@ version: '2.22'
 services:
   app:
     image: leandrolasnor/ruby:iob
-    container_name: iob.rails
+    container_name: iob.app
     stdin_open: true
     tty: true
     command: sh
     ports:
       - 3000:3000
+      - 3001:3001
