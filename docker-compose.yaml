@@ -1,18 +1,7 @@
 # docker-compose.yml
 version: '2.22'
 services:
-  frontend:
-    image: leandrolasnor/ruby:iob
-    container_name: iob.react
-    stdin_open: true
-    tty: true
-    command: sh
-    ports:
-      - 3001:3001
-    depends_on:
-      - backend
-
-  backend:
+  app:
     image: leandrolasnor/ruby:iob
     container_name: iob.rails
     stdin_open: true
