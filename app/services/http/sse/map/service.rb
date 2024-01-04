@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Sse::Map::Service < Sse::Service
+class Http::Sse::Map::Service < Http::Sse::Service
   option :monad, type: Interface(:call), default: -> { Map::Monad.new }, reader: :private
 
   def call
