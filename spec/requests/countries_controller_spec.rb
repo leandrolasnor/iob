@@ -20,21 +20,6 @@ RSpec.describe CountriesController do
             }
           ]
         end
-        let(:expected_body) do
-          {
-            data: {
-              type: 'COUNTRY_FETCHED',
-              payload: [
-                { country: countries.first.code, value: countries.first.demographic_density },
-                { country: countries.second.code, value: countries.second.demographic_density },
-                { country: countries.third.code, value: countries.third.demographic_density },
-                { country: countries.fourth.code, value: countries.fourth.demographic_density },
-                { country: countries.fifth.code, value: countries.fifth.demographic_density },
-                { country: countries.last.code, value: countries.last.demographic_density }
-              ]
-            }
-          }
-        end
 
         before do
           countries
